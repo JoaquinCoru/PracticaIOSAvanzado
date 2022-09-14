@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		D23EAF1628D0FC4200AA19CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EAF1528D0FC4200AA19CA /* AppDelegate.swift */; };
 		D23EAF1828D0FC4200AA19CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EAF1728D0FC4200AA19CA /* SceneDelegate.swift */; };
-		D23EAF1A28D0FC4200AA19CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EAF1928D0FC4200AA19CA /* ViewController.swift */; };
+		D23EAF1A28D0FC4200AA19CA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EAF1928D0FC4200AA19CA /* LoginViewController.swift */; };
 		D23EAF1D28D0FC4200AA19CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D23EAF1B28D0FC4200AA19CA /* Main.storyboard */; };
 		D23EAF2028D0FC4200AA19CA /* IOSAvanzado.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D23EAF1E28D0FC4200AA19CA /* IOSAvanzado.xcdatamodeld */; };
 		D23EAF2228D0FC4300AA19CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D23EAF2128D0FC4300AA19CA /* Assets.xcassets */; };
@@ -17,6 +17,8 @@
 		D23EAF3028D0FC4300AA19CA /* IOSAvanzadoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EAF2F28D0FC4300AA19CA /* IOSAvanzadoTests.swift */; };
 		D23EAF3A28D0FC4300AA19CA /* IOSAvanzadoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EAF3928D0FC4300AA19CA /* IOSAvanzadoUITests.swift */; };
 		D23EAF3C28D0FC4300AA19CA /* IOSAvanzadoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EAF3B28D0FC4300AA19CA /* IOSAvanzadoUITestsLaunchTests.swift */; };
+		D23EAF4C28D1083E00AA19CA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EAF4B28D1083E00AA19CA /* LoginViewModel.swift */; };
+		D23EAF4F28D1093A00AA19CA /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EAF4E28D1093A00AA19CA /* UIViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +42,7 @@
 		D23EAF1228D0FC4200AA19CA /* IOSAvanzado.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOSAvanzado.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D23EAF1528D0FC4200AA19CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D23EAF1728D0FC4200AA19CA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D23EAF1928D0FC4200AA19CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D23EAF1928D0FC4200AA19CA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D23EAF1C28D0FC4200AA19CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D23EAF1F28D0FC4200AA19CA /* IOSAvanzado.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = IOSAvanzado.xcdatamodel; sourceTree = "<group>"; };
 		D23EAF2128D0FC4300AA19CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,6 +53,8 @@
 		D23EAF3528D0FC4300AA19CA /* IOSAvanzadoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IOSAvanzadoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D23EAF3928D0FC4300AA19CA /* IOSAvanzadoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSAvanzadoUITests.swift; sourceTree = "<group>"; };
 		D23EAF3B28D0FC4300AA19CA /* IOSAvanzadoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSAvanzadoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D23EAF4B28D1083E00AA19CA /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		D23EAF4E28D1093A00AA19CA /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,10 +107,11 @@
 			children = (
 				D23EAF1528D0FC4200AA19CA /* AppDelegate.swift */,
 				D23EAF1728D0FC4200AA19CA /* SceneDelegate.swift */,
-				D23EAF1928D0FC4200AA19CA /* ViewController.swift */,
-				D23EAF1B28D0FC4200AA19CA /* Main.storyboard */,
+				D23EAF4828D107E400AA19CA /* Views */,
+				D23EAF4A28D1082200AA19CA /* ViewModels */,
+				D23EAF4928D1080600AA19CA /* Resources */,
+				D23EAF4D28D108F600AA19CA /* Extensions */,
 				D23EAF2128D0FC4300AA19CA /* Assets.xcassets */,
-				D23EAF2328D0FC4300AA19CA /* LaunchScreen.storyboard */,
 				D23EAF2628D0FC4300AA19CA /* Info.plist */,
 				D23EAF1E28D0FC4200AA19CA /* IOSAvanzado.xcdatamodeld */,
 			);
@@ -128,6 +133,39 @@
 				D23EAF3B28D0FC4300AA19CA /* IOSAvanzadoUITestsLaunchTests.swift */,
 			);
 			path = IOSAvanzadoUITests;
+			sourceTree = "<group>";
+		};
+		D23EAF4828D107E400AA19CA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D23EAF1928D0FC4200AA19CA /* LoginViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D23EAF4928D1080600AA19CA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D23EAF2328D0FC4300AA19CA /* LaunchScreen.storyboard */,
+				D23EAF1B28D0FC4200AA19CA /* Main.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D23EAF4A28D1082200AA19CA /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D23EAF4B28D1083E00AA19CA /* LoginViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D23EAF4D28D108F600AA19CA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D23EAF4E28D1093A00AA19CA /* UIViewControllerExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,9 +299,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D23EAF1A28D0FC4200AA19CA /* ViewController.swift in Sources */,
+				D23EAF1A28D0FC4200AA19CA /* LoginViewController.swift in Sources */,
 				D23EAF1628D0FC4200AA19CA /* AppDelegate.swift in Sources */,
+				D23EAF4F28D1093A00AA19CA /* UIViewControllerExtension.swift in Sources */,
 				D23EAF1828D0FC4200AA19CA /* SceneDelegate.swift in Sources */,
+				D23EAF4C28D1083E00AA19CA /* LoginViewModel.swift in Sources */,
 				D23EAF2028D0FC4200AA19CA /* IOSAvanzado.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
