@@ -42,6 +42,38 @@ class LoginViewController: UIViewController {
             return
         }
         
+        self.activityIndicator.isHidden = false
+        self.activityIndicator.startAnimating()
+        self.view.isUserInteractionEnabled = false
+        
+        viewModel.callLoginService(
+            user: user,
+            password: password) { token, error in
+                
+                if let error = error {
+                    // show the correct errors
+                    
+                    DispatchQueue.main.async {
+                        self.activityIndicator.isHidden = true
+                        self.activityIndicator.stopAnimating()
+                        self.view.isUserInteractionEnabled = true
+                        self.showAlert(title: "There was an error", message: error.localizedDescription)
+                        return
+                    }
+                  
+                }
+                
+                if let token = token {
+                    self.viewModel.saveToken(token: token)
+                    DispatchQueue.main.async {
+                        self.activityIndicator.isHidden = true
+                        self.activityIndicator.stopAnimating()
+                        self.view.isUserInteractionEnabled = true
+                        self.showAlert(title: "Login correcto")
+                        
+                    }
+                }
+            }
         
     }
 }
