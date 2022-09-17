@@ -52,7 +52,6 @@ class LoginViewController: UIViewController {
                 
                 if let error = error {
                     // show the correct errors
-                    
                     DispatchQueue.main.async {
                         self.activityIndicator.isHidden = true
                         self.activityIndicator.stopAnimating()
@@ -64,13 +63,17 @@ class LoginViewController: UIViewController {
                 }
                 
                 if let token = token {
+                    print("Token servicio \(token)")
                     self.viewModel.saveToken(token: token)
+                    
+                    print("Token guardado: \(self.viewModel.readToken())")
+                    
+                    self.viewModel.callHeroService()
                     DispatchQueue.main.async {
                         self.activityIndicator.isHidden = true
                         self.activityIndicator.stopAnimating()
                         self.view.isUserInteractionEnabled = true
                         self.showAlert(title: "Login correcto")
-                        
                     }
                 }
             }

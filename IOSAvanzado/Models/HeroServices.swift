@@ -1,18 +1,18 @@
 //
 //  HeroServices.swift
-//  AppleMaps
+//  IOSAvanzado
 //
-//  Created by Salvador Martínez Landrian on 1/9/22.
+//  Created by Joaquín Corugedo Rodríguez on 1/9/22.
 //
 
 import Foundation
 
-struct HeroService: Decodable {
-    let photo: URL
+struct HeroService: Decodable{
     let id: String
-    let favorite: Bool
     let name: String
     let description: String
+    let photo: URL
+    let favorite: Bool
     var latitud: Double?
     var longitude: Double?
 }

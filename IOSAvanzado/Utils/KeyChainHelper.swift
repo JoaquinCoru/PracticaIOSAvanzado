@@ -74,14 +74,13 @@ final class KeyChainHelper {
         }
     }
 
-    func read<T: Codable>(item: T, service: String, account: String) -> T? {
-
+    func read<T: Codable>(item: T, service: String, account: String, type: T.Type) -> T? {
         guard let data = read(service: service, account: account) else {
             return nil
         }
 
         do {
-            let item = try JSONDecoder().decode(T.self, from: data)
+            let item = try JSONDecoder().decode(type, from: data)
             return item
         } catch {
             return nil

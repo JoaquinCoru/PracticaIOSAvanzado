@@ -51,6 +51,32 @@ final class LoginViewModel {
     
     func callHeroService(){
         let data = keyChain.read(service: service, account: account)
+        let token = String(decoding: data ?? Data(), as: UTF8.self)
+
+        self.network.getHeroes { heroes, _ in
+
+            var heroesWithCoordinate: [HeroService] = heroes
+            
+            for (inde, hero) in heroesWithCoordinate.enumerated() {
+                self.network.getLocalizacionHeroe(id:hero.id, completion: { coordenates, error in
+                    if error != nil {
+                        return
+                    }
+                    
+                    if coordenates.isEmpty {
+//                        self.goToSaveHero(inde: inde, heroesWithCoordinate: heroesWithCoordinate)
+                        return
+                    }
+                    
+                    let lastCoordenate = coordenates.last
+                    
+                    heroesWithCoordinate[inde].latitud = Double(lastCoordenate?.latitud ?? "0.0") ?? 0.0
+                    heroesWithCoordinate[inde].longitude = Double(lastCoordenate?.longitud ?? "0.0") ?? 0.0
+                    
+//                    self.goToSaveHero(inde: inde, heroesWithCoordinate: heroesWithCoordinate)
+                })
+            }
+        }
     }
 }
 

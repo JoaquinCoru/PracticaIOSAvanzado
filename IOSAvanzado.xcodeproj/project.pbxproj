@@ -23,6 +23,7 @@
 		D23EAF4F28D1093A00AA19CA /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EAF4E28D1093A00AA19CA /* UIViewControllerExtension.swift */; };
 		D264885F28D3A9D400CA0675 /* HeroServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D264885E28D3A9D400CA0675 /* HeroServices.swift */; };
 		D264886128D3A9D900CA0675 /* HeroCoordenates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D264886028D3A9D900CA0675 /* HeroCoordenates.swift */; };
+		D2C9FC5328D5EF6500FCB1CE /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C9FC5228D5EF6500FCB1CE /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		D23EAF4E28D1093A00AA19CA /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		D264885E28D3A9D400CA0675 /* HeroServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroServices.swift; sourceTree = "<group>"; };
 		D264886028D3A9D900CA0675 /* HeroCoordenates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroCoordenates.swift; sourceTree = "<group>"; };
+		D2C9FC5228D5EF6500FCB1CE /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 		D203697828D253E0008BB21E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				D2C9FC5228D5EF6500FCB1CE /* CoreDataManager.swift */,
 				D203697928D25402008BB21E /* KeyChainHelper.swift */,
 				D203697B28D2545B008BB21E /* NetworkModel.swift */,
 			);
@@ -337,6 +340,7 @@
 				D23EAF4C28D1083E00AA19CA /* LoginViewModel.swift in Sources */,
 				D203697A28D25402008BB21E /* KeyChainHelper.swift in Sources */,
 				D23EAF2028D0FC4200AA19CA /* IOSAvanzado.xcdatamodeld in Sources */,
+				D2C9FC5328D5EF6500FCB1CE /* CoreDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
