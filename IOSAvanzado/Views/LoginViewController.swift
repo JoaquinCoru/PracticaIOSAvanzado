@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol LoginViewProtocol:AnyObject {
+    
+    func navigateToHome()
+}
+
 class LoginViewController: UIViewController {
 
     //MARK: - IBOutlet
@@ -15,7 +20,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     //MARK - Constant
-    let viewModel = LoginViewModel()
+    var viewModel:LoginViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +51,7 @@ class LoginViewController: UIViewController {
         self.activityIndicator.startAnimating()
         self.view.isUserInteractionEnabled = false
         
-        viewModel.callLoginService(
+        viewModel?.callLoginService(
             user: user,
             password: password) { token, error in
                 
@@ -64,11 +69,11 @@ class LoginViewController: UIViewController {
                 
                 if let token = token {
                     print("Token servicio \(token)")
-                    self.viewModel.saveToken(token: token)
+                    self.viewModel?.saveToken(token: token)
                     
-                    print("Token guardado: \(self.viewModel.readToken())")
+                    print("Token guardado: \(self.viewModel?.readToken() ?? "")")
                     
-                    self.viewModel.callHeroService()
+                    self.viewModel?.callHeroService()
                     DispatchQueue.main.async {
                         self.activityIndicator.isHidden = true
                         self.activityIndicator.stopAnimating()
@@ -79,5 +84,13 @@ class LoginViewController: UIViewController {
             }
         
     }
+}
+
+extension LoginViewController:LoginViewProtocol {
+    
+    func navigateToHome() {
+        
+    }
+    
 }
 
