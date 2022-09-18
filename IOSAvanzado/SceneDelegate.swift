@@ -11,7 +11,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-    private let loginIdentifier = "Main"
+    private let loginIdentifier = "Login"
+    private let homeIdentifier = "Home"
+    //Para comprobar token y CoreData pasar a Home si existen
+    private let service = "DragonBall"
+    private let account = "Joaquin"
+    private let keyChain = KeyChainHelper.standar
+    private let dataManager = CoreDataManager()
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -20,13 +26,33 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         
-        let loginStoryBoard = UIStoryboard(name: loginIdentifier,bundle: nil)
+        let data = keyChain.read(service: service, account: account)
+        let token = String(decoding: data ?? Data(), as: UTF8.self)
         
-        guard let destination = loginStoryBoard.instantiateInitialViewController() as? LoginViewController else { return }
-        
-        destination.viewModel = LoginViewModel(viewDelegate: destination)
-        
-        window.rootViewController = destination
+        if (token != "" && dataManager.fetchHeroe() != []){
+
+            let homeStoryBoard = UIStoryboard(name: homeIdentifier,bundle: nil)
+
+            guard let destination = homeStoryBoard.instantiateInitialViewController() as? HomeViewController else { return }
+
+            destination.viewModel = HomeViewModel(viewDelegate: destination)
+
+            let navigationController = UINavigationController(rootViewController: destination)
+            navigationController.isNavigationBarHidden = true
+            window.rootViewController = navigationController
+
+        }else{
+            let loginStoryBoard = UIStoryboard(name: loginIdentifier,bundle: nil)
+
+            guard let destination = loginStoryBoard.instantiateInitialViewController() as? LoginViewController else { return }
+
+            destination.viewModel = LoginViewModel(viewDelegate: destination)
+
+            let navigationController = UINavigationController(rootViewController: destination)
+            navigationController.isNavigationBarHidden = true
+            window.rootViewController = navigationController
+
+        }
         
         self.window = window
         window.makeKeyAndVisible()

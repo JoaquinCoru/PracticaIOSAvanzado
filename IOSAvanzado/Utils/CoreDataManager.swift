@@ -32,7 +32,7 @@ class CoreDataManager {
 
         do {
             try context.save()
-            print("Heroes guardado: \(heroServices)")
+//            print("Heroes guardado: \(heroServices)")
             completion?()
         } catch {
           print("Error guardando usuario — \(error)")
