@@ -77,6 +77,10 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="Nb3-LD-urO"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="bSX-a3-jHt"/>
+                                </connections>
                             </collectionView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="28z-AS-BhP">
                                 <rect key="frame" x="185" y="412" width="20" height="20"/>

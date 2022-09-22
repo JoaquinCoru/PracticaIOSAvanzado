@@ -1,8 +1,8 @@
 //
 //  CoreDataManager.swift
-//  AppleMaps
+//  IOSAvanzado
 //
-//  Created by Salvador Martínez Landrian on 1/9/22.
+//  Created by Joaquín Corugedo Rodríguez on 1/9/22.
 //
 
 import Foundation

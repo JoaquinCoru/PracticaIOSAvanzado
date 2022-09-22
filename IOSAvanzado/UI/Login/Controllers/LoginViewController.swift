@@ -60,24 +60,17 @@ class LoginViewController: UIViewController {
                 if let error = error {
                     // show the correct errors
                     DispatchQueue.main.async {
+                        self.view.isUserInteractionEnabled = true
                         self.activityIndicator.isHidden = true
                         self.activityIndicator.stopAnimating()
-                        self.view.isUserInteractionEnabled = true
                         self.showAlert(title: "There was an error", message: error.localizedDescription)
                         return
                     }
-                  
                 }
                 
                 if let token = token {
                     self.viewModel?.saveToken(token: token)
-        
                     self.viewModel?.callHeroService()
-                    DispatchQueue.main.async {
-                        self.activityIndicator.isHidden = true
-                        self.activityIndicator.stopAnimating()
-                        self.view.isUserInteractionEnabled = true
-                    }
                 }
             }
         
@@ -92,6 +85,8 @@ extension LoginViewController:LoginViewProtocol {
         
         DispatchQueue.main.async {
             guard let destinationViewController  = homeStoryboard.instantiateInitialViewController() as? HomeViewController else {return}
+            
+            destinationViewController.viewModel = HomeViewModel(viewDelegate: destinationViewController)
             
              self.navigationController?.setViewControllers([destinationViewController], animated: true)
         }

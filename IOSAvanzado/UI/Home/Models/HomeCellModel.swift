@@ -1,6 +1,6 @@
 //
 //  HomeCellModel.swift
-//  DragonBallApp
+//  IOSAvanzado
 //
 //  Created by Joaquín Corugedo Rodríguez on 24/7/22.
 //

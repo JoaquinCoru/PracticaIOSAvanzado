@@ -49,7 +49,7 @@ final class LoginViewModel {
     
     func callHeroService(){
         
-        if (self.dataManager.fetchHeroe() != []) {
+        if (!self.dataManager.fetchHeroe().isEmpty) {
             viewDelegate?.navigateToHome()
             return
         }

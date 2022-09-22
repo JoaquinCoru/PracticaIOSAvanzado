@@ -1,13 +1,13 @@
 //
 //  NetworkModel.swift
-//  AppleMaps
+//  IOSAvanzado
 //
-//  Created by Salvador Martínez Landrian on 1/9/22.
+//  Created by Joaquín Corugedo Rodríguez on 1/9/22.
 //
 
 import Foundation
 
-enum NetworkError: Error {
+enum NetworkError: Error, Equatable {
   case malformedURL
   case noData
   case statusCode(code: Int?)
@@ -17,14 +17,15 @@ enum NetworkError: Error {
 
 class NetworkModel {
 
+    let session: URLSession
     private var token: String?
 
-    convenience init(token: String) {
-        self.init()
+    init(urlSession: URLSession = .shared,token: String? = nil) {
+        self.session = urlSession
         self.token = token
     }
 
-    func login(user: String, password: String, completion: ((String?, Error?) -> Void)? = nil) {
+    func login(user: String, password: String, completion: ((String?, NetworkError?) -> Void)? = nil) {
         guard let url = URL(string: "https://vapor2022.herokuapp.com/api/auth/login") else {
             completion?(nil, NetworkError.malformedURL)
             return
@@ -38,7 +39,7 @@ class NetworkModel {
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
 
-        let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+        let task = session.dataTask(with: urlRequest) { (data, response, error) in
             guard error == nil else {
                 completion?(nil, NetworkError.unknown)
                 return
@@ -80,7 +81,7 @@ class NetworkModel {
         urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         urlRequest.httpBody = urlComponents.query?.data(using: .utf8)
 
-        let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+        let task = session.dataTask(with: urlRequest) { (data, response, error) in
             guard error == nil else {
                 completion([], NetworkError.unknown)
                 return
@@ -116,7 +117,7 @@ class NetworkModel {
         urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         urlRequest.httpBody = urlComponents.query?.data(using: .utf8)
 
-        let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+        let task = session.dataTask(with: urlRequest) { (data, response, error) in
             guard error == nil else {
                 completion?([], NetworkError.unknown)
                 return
