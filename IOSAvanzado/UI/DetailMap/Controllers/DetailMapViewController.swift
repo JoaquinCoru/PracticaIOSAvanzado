@@ -19,8 +19,6 @@ class DetailMapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-        
         guard let model else {return}
 
         self.title = model.name

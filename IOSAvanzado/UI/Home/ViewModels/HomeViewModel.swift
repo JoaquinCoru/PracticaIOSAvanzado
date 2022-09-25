@@ -13,6 +13,7 @@ final class HomeViewModel{
     private var keychain: KeychainSwift
     
     private(set) var content: [Hero] = []
+    var filteredContent: [Hero] = []
     
     var onSuccess: (() -> Void)?
     var onError: ((String, NetworkError?) -> Void)?
@@ -65,6 +66,7 @@ final class HomeViewModel{
                         LocalDataModel.saveSyncDate(date: Date())
                         let cdHeroes = CoreDataManager.shared.fetchHeroes()
                         self?.content = cdHeroes.map { $0.hero }
+                        self?.filteredContent = cdHeroes.map { $0.hero }
                         self?.onSuccess?()
                     
                     }
@@ -75,7 +77,7 @@ final class HomeViewModel{
         
         print("Heroes from CD")
         content = cdHeroes.map { $0.hero }
-        
+        filteredContent = content
         
         for cdHero in cdHeroes{
             let locations = CoreDataManager.shared.fetchLocations(for: cdHero.id)
