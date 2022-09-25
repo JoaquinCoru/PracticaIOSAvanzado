@@ -30,7 +30,7 @@ final class HomeViewModel{
     func viewDidLoad() {
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             self?.loadHeroes()
-            self?.keychain.delete("KCToken")
+           // self?.keychain.delete("KCToken")
         }
     }
     

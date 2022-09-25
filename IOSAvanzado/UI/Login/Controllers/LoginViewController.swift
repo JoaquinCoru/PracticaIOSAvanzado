@@ -66,8 +66,7 @@ class LoginViewController: UIViewController {
             return
         }
         
-        viewModel.login(with: userTextField.text ?? "", password: passwordTextField.text ?? "")
-        
+        viewModel.login(with: userTextField.text ?? "", password: passwordTextField.text ?? "")        
 
     }
 }

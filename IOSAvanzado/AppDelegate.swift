@@ -7,14 +7,33 @@
 
 import UIKit
 import CoreData
+import KeychainSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let keychain = KeychainSwift()
+        if (!isAppAlreadyLaunchedOnce()) {
+            keychain.delete("KCToken")
+        }
+        
         return true
     }
+    
+    func isAppAlreadyLaunchedOnce()->Bool{
+            let defaults = UserDefaults.standard
+            
+            if defaults.bool(forKey: "isAppFistLaunched"){
+                print("App already launched")
+                return true
+            }else{
+                defaults.set(true, forKey: "isAppFistLaunched")
+                print("App launched first time")
+                return false
+            }
+        }
 
     // MARK: UISceneSession Lifecycle
 

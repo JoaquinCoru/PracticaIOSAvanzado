@@ -17,9 +17,15 @@ class HomeViewController: UIViewController {
     
     //MARK: Constant
     let viewModel = HomeViewModel()
+    
+    private let detailIdentifier = "DetailMap"
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "Heroes"
+        navigationController?.navigationBar.isHidden = false
+        collectionView.isHidden = true
         
         configureViews()
         
@@ -82,6 +88,16 @@ extension HomeViewController:UICollectionViewDelegate, UICollectionViewDataSourc
 
         return cell
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let hero = viewModel.content[indexPath.row]
+        let nextStoryboard = UIStoryboard(name: detailIdentifier,bundle: nil)
+        guard let nextVC = nextStoryboard.instantiateInitialViewController() as? DetailMapViewController else {return}
+        
+        nextVC.set(model: hero)
+        
+        navigationController?.pushViewController(nextVC, animated: true)
     }
     
 }

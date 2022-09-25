@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let keychain = KeychainSwift()
         let firstViewController: UIViewController
-
+        
         if keychain.get("KCToken") != nil {
             let homeStoryBoard = UIStoryboard(name: homeIdentifier,bundle: nil)
             firstViewController = homeStoryBoard.instantiateInitialViewController() as? HomeViewController ?? HomeViewController()
@@ -42,6 +42,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         self.window = window
     }
+    
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

@@ -23,7 +23,8 @@ extension UIImageView {
       guard let data = data,
             let image = UIImage(data: data)
       else {
-        completion?(nil)
+          let image = UIImage(named: "fondo4")
+        completion?(image)
         return
       }
       completion?(image)

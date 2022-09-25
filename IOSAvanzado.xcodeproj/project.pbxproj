@@ -34,6 +34,10 @@
 		D2DC116C28E0631E00AE86E2 /* noHeroes.json in Resources */ = {isa = PBXBuildFile; fileRef = D2DC116A28E0631E00AE86E2 /* noHeroes.json */; };
 		D2DC116E28E065A600AE86E2 /* locations.json in Resources */ = {isa = PBXBuildFile; fileRef = D2DC116D28E065A600AE86E2 /* locations.json */; };
 		D2DC117028E0687200AE86E2 /* LocalDataModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DC116F28E0687200AE86E2 /* LocalDataModelTests.swift */; };
+		D2DC117628E07DB500AE86E2 /* DetailMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2DC117528E07DB500AE86E2 /* DetailMap.storyboard */; };
+		D2DC117828E07E4700AE86E2 /* DetailMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DC117728E07E4700AE86E2 /* DetailMapViewController.swift */; };
+		D2DC117A28E08B5100AE86E2 /* DetailMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DC117928E08B5100AE86E2 /* DetailMapViewModel.swift */; };
+		D2DC117C28E08BF200AE86E2 /* MapViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2DC117B28E08BF200AE86E2 /* MapViewExtension.swift */; };
 		D2E5816128D7ABFD00605C6D /* HomeCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E5816028D7ABFD00605C6D /* HomeCellModel.swift */; };
 		D2E5816328D7CF5E00605C6D /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E5816228D7CF5E00605C6D /* CellView.swift */; };
 		D2E5816628D7D24D00605C6D /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E5816528D7D24D00605C6D /* UIImageViewExtension.swift */; };
@@ -82,6 +86,10 @@
 		D2DC116A28E0631E00AE86E2 /* noHeroes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = noHeroes.json; sourceTree = "<group>"; };
 		D2DC116D28E065A600AE86E2 /* locations.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = locations.json; sourceTree = "<group>"; };
 		D2DC116F28E0687200AE86E2 /* LocalDataModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalDataModelTests.swift; sourceTree = "<group>"; };
+		D2DC117528E07DB500AE86E2 /* DetailMap.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailMap.storyboard; sourceTree = "<group>"; };
+		D2DC117728E07E4700AE86E2 /* DetailMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapViewController.swift; sourceTree = "<group>"; };
+		D2DC117928E08B5100AE86E2 /* DetailMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapViewModel.swift; sourceTree = "<group>"; };
+		D2DC117B28E08BF200AE86E2 /* MapViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewExtension.swift; sourceTree = "<group>"; };
 		D2E5816028D7ABFD00605C6D /* HomeCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCellModel.swift; sourceTree = "<group>"; };
 		D2E5816228D7CF5E00605C6D /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 		D2E5816528D7D24D00605C6D /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
@@ -186,6 +194,7 @@
 			children = (
 				D2E5816528D7D24D00605C6D /* UIImageViewExtension.swift */,
 				D23EAF4E28D1093A00AA19CA /* UIViewControllerExtension.swift */,
+				D2DC117B28E08BF200AE86E2 /* MapViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -206,6 +215,7 @@
 		D2980D6228D6701E0014E603 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				D2DC117128E07BCB00AE86E2 /* DetailMap */,
 				D2980D6328D6703F0014E603 /* Login */,
 				D2980D6528D670BC0014E603 /* Home */,
 			);
@@ -276,6 +286,40 @@
 				D2C9FC5228D5EF6500FCB1CE /* CoreDataManager.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		D2DC117128E07BCB00AE86E2 /* DetailMap */ = {
+			isa = PBXGroup;
+			children = (
+				D2DC117228E07BE800AE86E2 /* Views */,
+				D2DC117328E07BEE00AE86E2 /* Controllers */,
+				D2DC117428E07BF500AE86E2 /* ViewModels */,
+			);
+			path = DetailMap;
+			sourceTree = "<group>";
+		};
+		D2DC117228E07BE800AE86E2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D2DC117528E07DB500AE86E2 /* DetailMap.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D2DC117328E07BEE00AE86E2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D2DC117728E07E4700AE86E2 /* DetailMapViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D2DC117428E07BF500AE86E2 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D2DC117928E08B5100AE86E2 /* DetailMapViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		D2E5815F28D7ABEB00605C6D /* Models */ = {
@@ -375,6 +419,7 @@
 			files = (
 				D23EAF2528D0FC4300AA19CA /* LaunchScreen.storyboard in Resources */,
 				D23EAF2228D0FC4300AA19CA /* Assets.xcassets in Resources */,
+				D2DC117628E07DB500AE86E2 /* DetailMap.storyboard in Resources */,
 				D23EAF1D28D0FC4200AA19CA /* Login.storyboard in Resources */,
 				D2980D6A28D671220014E603 /* Home.storyboard in Resources */,
 			);
@@ -400,6 +445,8 @@
 				D2D9910E28DF6FC700BC4DEC /* LocalDataModel.swift in Sources */,
 				D203697C28D2545B008BB21E /* NetworkModel.swift in Sources */,
 				D2EED4CF28DFC0CF001A3BD7 /* CDLocation+CoreDataProperties.swift in Sources */,
+				D2DC117828E07E4700AE86E2 /* DetailMapViewController.swift in Sources */,
+				D2DC117A28E08B5100AE86E2 /* DetailMapViewModel.swift in Sources */,
 				D2D9912328DF735900BC4DEC /* CDHero+CoreDataClass.swift in Sources */,
 				D264886128D3A9D900CA0675 /* HeroCoordenates.swift in Sources */,
 				D23EAF1A28D0FC4200AA19CA /* LoginViewController.swift in Sources */,
@@ -407,6 +454,7 @@
 				D2E5816128D7ABFD00605C6D /* HomeCellModel.swift in Sources */,
 				D23EAF4F28D1093A00AA19CA /* UIViewControllerExtension.swift in Sources */,
 				D23EAF1828D0FC4200AA19CA /* SceneDelegate.swift in Sources */,
+				D2DC117C28E08BF200AE86E2 /* MapViewExtension.swift in Sources */,
 				D264885F28D3A9D400CA0675 /* HeroServices.swift in Sources */,
 				D23EAF4C28D1083E00AA19CA /* LoginViewModel.swift in Sources */,
 				D2980D6E28D682450014E603 /* HomeViewModel.swift in Sources */,
