@@ -7,11 +7,6 @@
 
 import UIKit
 
-protocol HomeViewProtocol:AnyObject{
-    
-    func showLoading(_ show:Bool)
-    func updateViews()
-}
 
 class HomeViewController: UIViewController {
     
@@ -21,18 +16,34 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     //MARK: Constant
-    var viewModel:HomeViewModelProtocol?
+    let viewModel = HomeViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureViews()
-        viewModel?.onViewsLoaded()
+        
+        viewModel.onSuccess = {
+            DispatchQueue.main.async { [weak self] in
+                self?.activityIndicator.stopAnimating()
+                self?.collectionView.isHidden = false
+                self?.collectionView.reloadData()
+            }
+        }
+        
+        viewModel.onError = { title, error in
+            self.activityIndicator.stopAnimating()
+            self.collectionView.isHidden = false
+            print(error?.localizedDescription)
+        }
+        
+        viewModel.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = false
+
     }
     
     private func configureViews(){
@@ -41,34 +52,14 @@ class HomeViewController: UIViewController {
     }
 }
 
-extension HomeViewController:HomeViewProtocol{
 
-    func showLoading(_ show: Bool) {
-            
-        switch show{
-            case true :
-                activityIndicator.startAnimating()
-                collectionView.isHidden = true
-                
-            case false:
-                activityIndicator.stopAnimating()
-                collectionView.isHidden = false
-            }
-            
-    }
-    
-    func updateViews() {
-        collectionView.reloadData()
-    }
-
-}
 
 extension HomeViewController:UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return viewModel?.dataCount ?? 0
+        return viewModel.content.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -77,13 +68,19 @@ extension HomeViewController:UICollectionViewDelegate, UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellView.cellIdentifier, for: indexPath) as? CellView
-
-        if let data = viewModel?.data(for: indexPath.row) {
-            cell?.updateViews(data: data)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellView.cellIdentifier, for: indexPath) as? CellView else {
+            return UICollectionViewCell()
         }
+        
+        let hero = viewModel.content[indexPath.row]
 
-        return cell ?? UICollectionViewCell()
+        cell.updateViews(data: HomeCellModel(
+            image: hero.photo,
+            title: hero.name,
+            description: hero.description)
+        )
+
+        return cell
         
     }
     

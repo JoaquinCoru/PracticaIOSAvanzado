@@ -20,12 +20,23 @@ final class LoginViewModelTest: XCTestCase {
 
     func test_ViewModel_CallLoginService_TokenSuccess() {
         let network = NetWorkModelSpy()
-        let view = LoginViewController()
-        let viewModel = LoginViewModel(network: network, viewDelegate: view)
+        let viewModel = LoginViewModel(networkModel: network)
 
-        viewModel.callLoginService(user: "Joaquin", password: "") { token, error in
+        viewModel.login(with: "Joaquin", password: "") { token, error in
             XCTAssertEqual(token, "miToken")
         }
     }
+    
+    func test_ViewModel_CallLoginService_TokenFailure(){
+        let network = NetWorkModelSpy()
+        let viewModel = LoginViewModel(networkModel: network)
+        
+        viewModel.login(with: "Paco", password: "") {token, error in
+            XCTAssertNotNil(error, "There should be an error")
+            XCTAssertNil(token,"Token should be nil" )
+        }
+        
+    }
+
 
 }

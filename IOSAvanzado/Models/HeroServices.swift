@@ -7,12 +7,10 @@
 
 import Foundation
 
-struct HeroService: Decodable{
+struct Hero: Decodable{
+    let photo: URL
     let id: String
+    let favorite: Bool
     let name: String
     let description: String
-    let photo: URL
-    let favorite: Bool
-    var latitud: Double?
-    var longitude: Double?
 }

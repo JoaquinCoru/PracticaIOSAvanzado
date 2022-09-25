@@ -17,81 +17,59 @@ class LoginViewController: UIViewController {
     //MARK: - IBOutlet
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     //MARK - Constant
-    var viewModel:LoginViewModel?
+    let viewModel:LoginViewModel = LoginViewModel()
     
     private let homeIdentifier = "Home"
     
     override func viewDidLoad() {
+        
+        viewModel.onLogin = { [weak self] in
+            self?.activityIndicator.stopAnimating()
+            self?.loginButton.isEnabled = true
+            
+            let homeStoryBoard = UIStoryboard(name: self?.homeIdentifier ?? "",bundle: nil)
+            guard let nextViewController = homeStoryBoard.instantiateInitialViewController() as? HomeViewController else{return}
+
+            self?.navigationController?.setViewControllers([nextViewController], animated: true)
+        }
+        
+        viewModel.onError = { [weak self] alertTitle, networkError in
+            self?.activityIndicator.stopAnimating()
+            self?.loginButton.isEnabled = true
+            self?.showAlert(title: alertTitle, message: networkError?.localizedDescription ?? "")
+        }
+        
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        activityIndicator.isHidden = true
-    }
 
     @IBAction func loginPressed(_ sender: Any) {
+        activityIndicator.startAnimating()
+        loginButton.isEnabled = false
         
         guard let user = userTextField.text,
               let password = passwordTextField.text else {
             //Show errors validations textField
-            showAlert(title: "Validation", message: "error in validation of text fields")
+            viewModel.onError?("Error in validation of text fields",nil)
+
             return
         }
 
         if user.isEmpty || password.isEmpty {
             //Show empty validations
-            showAlert(title: "Missing fields", message: "please complete all fields to login")
+            viewModel.onError?("Please complete all fields to login",nil)
+
             return
         }
         
-        self.activityIndicator.isHidden = false
-        self.activityIndicator.startAnimating()
-        self.view.isUserInteractionEnabled = false
+        viewModel.login(with: userTextField.text ?? "", password: passwordTextField.text ?? "")
         
-        viewModel?.callLoginService(
-            user: user,
-            password: password) { token, error in
-                
-                if let error = error {
-                    // show the correct errors
-                    DispatchQueue.main.async {
-                        self.view.isUserInteractionEnabled = true
-                        self.activityIndicator.isHidden = true
-                        self.activityIndicator.stopAnimating()
-                        self.showAlert(title: "There was an error", message: error.localizedDescription)
-                        return
-                    }
-                }
-                
-                if let token = token {
-                    self.viewModel?.saveToken(token: token)
-                    self.viewModel?.callHeroService()
-                }
-            }
-        
+
     }
 }
 
-extension LoginViewController:LoginViewProtocol {
-    
-    func navigateToHome() {
-        
-        let homeStoryboard = UIStoryboard(name: homeIdentifier, bundle: nil)
-        
-        DispatchQueue.main.async {
-            guard let destinationViewController  = homeStoryboard.instantiateInitialViewController() as? HomeViewController else {return}
-            
-            destinationViewController.viewModel = HomeViewModel(viewDelegate: destinationViewController)
-            
-             self.navigationController?.setViewControllers([destinationViewController], animated: true)
-        }
-
-    }
-    
-}
 

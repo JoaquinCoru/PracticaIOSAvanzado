@@ -18,4 +18,8 @@ class NetWorkModelSpy: NetworkModel {
         
         completion?(nil, nil)
     }
+    
+    override func getHeroes(completion: @escaping ([Hero], NetworkError?) -> Void) {
+        
+    }
 }

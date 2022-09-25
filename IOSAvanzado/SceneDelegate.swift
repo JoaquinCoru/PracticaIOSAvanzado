@@ -6,56 +6,41 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    
+    let loginIdentifier = "Login"
+    let homeIdentifier = "Home"
 
-    private let loginIdentifier = "Login"
-    private let homeIdentifier = "Home"
-    //Para comprobar token y CoreData pasar a Home si existen
-    private let service = "DragonBall"
-    private let account = "Joaquin"
-    private let keyChain = KeyChainHelper.standar
-    private let dataManager = CoreDataManager()
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let windowScene = (scene as? UIWindowScene) else { return }
-        let window = UIWindow(windowScene: windowScene)
-        
-        let data = keyChain.read(service: service, account: account)
-        let token = String(decoding: data ?? Data(), as: UTF8.self)
-        
-        if (token != "" && dataManager.fetchHeroe() != []){
 
+        guard let scene = (scene as? UIWindowScene) else { return }
+        let window = UIWindow(windowScene: scene)
+        let navigationController = UINavigationController()
+        navigationController.navigationBar.isHidden = true
+        
+        let keychain = KeychainSwift()
+        let firstViewController: UIViewController
+
+        if keychain.get("KCToken") != nil {
             let homeStoryBoard = UIStoryboard(name: homeIdentifier,bundle: nil)
-
-            guard let destination = homeStoryBoard.instantiateInitialViewController() as? HomeViewController else { return }
-
-            destination.viewModel = HomeViewModel(viewDelegate: destination)
-
-            let navigationController = UINavigationController(rootViewController: destination)
-            navigationController.isNavigationBarHidden = true
-            window.rootViewController = navigationController
-
-        }else{
+            firstViewController = homeStoryBoard.instantiateInitialViewController() as? HomeViewController ?? HomeViewController()
+        } else {
+            
             let loginStoryBoard = UIStoryboard(name: loginIdentifier,bundle: nil)
-
-            guard let destination = loginStoryBoard.instantiateInitialViewController() as? LoginViewController else { return }
-
-            destination.viewModel = LoginViewModel(viewDelegate: destination)
-
-            let navigationController = UINavigationController(rootViewController: destination)
-            navigationController.isNavigationBarHidden = true
-            window.rootViewController = navigationController
-
+            firstViewController = loginStoryBoard.instantiateInitialViewController() as? LoginViewController ?? LoginViewController()
         }
         
-        self.window = window
+        navigationController.setViewControllers([firstViewController], animated: false)
+        
+        window.rootViewController = navigationController
         window.makeKeyAndVisible()
+        
+        self.window = window
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

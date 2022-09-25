@@ -8,7 +8,7 @@
 import Foundation
 
 struct HeroCoordenates: Decodable {
-    let latitud: String?
-    let longitud: String?
-    let id: String?
+    let id: String
+    let latitud: String
+    let longitud: String
 }
