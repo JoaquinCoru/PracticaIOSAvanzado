@@ -40,7 +40,7 @@ final class HomeViewModel{
         let cdHeroes = CoreDataManager.shared.fetchHeroes()
         
         guard let date = LocalDataModel.getSyncDate(),
-              date.addingTimeInterval(84960) > Date(),
+              date.addingTimeInterval(1) > Date(),
               !cdHeroes.isEmpty
         else {
             print("Do network call")
@@ -90,9 +90,7 @@ final class HomeViewModel{
     }
     
     func downloadLocations(for hero:Hero, completion: @escaping ()->Void){
-        let cdLocations = CoreDataManager.shared.fetchLocations(for: hero.id)
-        
-        if cdLocations.isEmpty {
+
             print("Do locations network call")
             guard let token = keychain.get("KCToken") else { return }
             
@@ -106,10 +104,6 @@ final class HomeViewModel{
                 }
                 completion()
             }
-        }else{
-            completion()
-        }
-        
         
     }
     
