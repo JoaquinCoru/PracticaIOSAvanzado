@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		D203697C28D2545B008BB21E /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D203697B28D2545B008BB21E /* NetworkModel.swift */; };
+		D22AF81328E108280039E2F9 /* CustomCallOutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D22AF81228E108280039E2F9 /* CustomCallOutView.xib */; };
+		D22AF81928E113380039E2F9 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22AF81828E113380039E2F9 /* Annotation.swift */; };
+		D22AF81B28E114800039E2F9 /* CustomCallOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22AF81A28E114800039E2F9 /* CustomCallOutView.swift */; };
+		D22AF81D28E115200039E2F9 /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22AF81C28E115200039E2F9 /* AnnotationView.swift */; };
 		D23E747E28D8F4FE00256DB3 /* LoginViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E747D28D8F4FE00256DB3 /* LoginViewModelTest.swift */; };
 		D23E748028D8F51900256DB3 /* NetworkModelSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23E747F28D8F51900256DB3 /* NetworkModelSpy.swift */; };
 		D23EAF1628D0FC4200AA19CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23EAF1528D0FC4200AA19CA /* AppDelegate.swift */; };
@@ -58,6 +62,10 @@
 
 /* Begin PBXFileReference section */
 		D203697B28D2545B008BB21E /* NetworkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
+		D22AF81228E108280039E2F9 /* CustomCallOutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCallOutView.xib; sourceTree = "<group>"; };
+		D22AF81828E113380039E2F9 /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
+		D22AF81A28E114800039E2F9 /* CustomCallOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCallOutView.swift; sourceTree = "<group>"; };
+		D22AF81C28E115200039E2F9 /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		D23E747D28D8F4FE00256DB3 /* LoginViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTest.swift; sourceTree = "<group>"; };
 		D23E747F28D8F51900256DB3 /* NetworkModelSpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkModelSpy.swift; sourceTree = "<group>"; };
 		D23EAF1228D0FC4200AA19CA /* IOSAvanzado.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOSAvanzado.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -302,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				D2DC117528E07DB500AE86E2 /* DetailMap.storyboard */,
+				D22AF81228E108280039E2F9 /* CustomCallOutView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -310,6 +319,9 @@
 			isa = PBXGroup;
 			children = (
 				D2DC117728E07E4700AE86E2 /* DetailMapViewController.swift */,
+				D22AF81828E113380039E2F9 /* Annotation.swift */,
+				D22AF81A28E114800039E2F9 /* CustomCallOutView.swift */,
+				D22AF81C28E115200039E2F9 /* AnnotationView.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -421,6 +433,7 @@
 				D23EAF2228D0FC4300AA19CA /* Assets.xcassets in Resources */,
 				D2DC117628E07DB500AE86E2 /* DetailMap.storyboard in Resources */,
 				D23EAF1D28D0FC4200AA19CA /* Login.storyboard in Resources */,
+				D22AF81328E108280039E2F9 /* CustomCallOutView.xib in Resources */,
 				D2980D6A28D671220014E603 /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -453,6 +466,7 @@
 				D23EAF1628D0FC4200AA19CA /* AppDelegate.swift in Sources */,
 				D2E5816128D7ABFD00605C6D /* HomeCellModel.swift in Sources */,
 				D23EAF4F28D1093A00AA19CA /* UIViewControllerExtension.swift in Sources */,
+				D22AF81B28E114800039E2F9 /* CustomCallOutView.swift in Sources */,
 				D23EAF1828D0FC4200AA19CA /* SceneDelegate.swift in Sources */,
 				D2DC117C28E08BF200AE86E2 /* MapViewExtension.swift in Sources */,
 				D264885F28D3A9D400CA0675 /* HeroServices.swift in Sources */,
@@ -460,10 +474,12 @@
 				D2980D6E28D682450014E603 /* HomeViewModel.swift in Sources */,
 				D2E5816328D7CF5E00605C6D /* CellView.swift in Sources */,
 				D2EED4CD28DFC0CF001A3BD7 /* CDHero+CoreDataProperties.swift in Sources */,
+				D22AF81D28E115200039E2F9 /* AnnotationView.swift in Sources */,
 				D23EAF2028D0FC4200AA19CA /* IOSAvanzado.xcdatamodeld in Sources */,
 				D2C9FC5328D5EF6500FCB1CE /* CoreDataManager.swift in Sources */,
 				D2EED4CE28DFC0CF001A3BD7 /* CDLocation+CoreDataClass.swift in Sources */,
 				D2E5816628D7D24D00605C6D /* UIImageViewExtension.swift in Sources */,
+				D22AF81928E113380039E2F9 /* Annotation.swift in Sources */,
 				D2980D6C28D6713F0014E603 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

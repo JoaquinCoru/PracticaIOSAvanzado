@@ -8,7 +8,7 @@
 import UIKit
 import MapKit
 
-class DetailMapViewController: UIViewController {
+class DetailMapViewController: UIViewController, MKMapViewDelegate{
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -22,7 +22,7 @@ class DetailMapViewController: UIViewController {
         guard let model else {return}
 
         self.title = model.name
-
+        mapView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,7 +62,16 @@ class DetailMapViewController: UIViewController {
     }
     
     @objc func loadHeroMap() {
-        mapView.addAnnotations(viewModel.annotationsForMap)
+        
+        guard let model else {return}
+        
+        let annotations = viewModel.locations.map { Annotation(hero: model, coordenate: HeroCoordenates(id: $0.id, latitud: $0.latitud, longitud: $0.longitud))
+        }
+        mapView.addAnnotations(annotations)
+        
+        mapView.register(AnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+        
+        mapView.showAnnotations(annotations, animated: true)
     }
     
     func centerToLastLocation(){
@@ -81,9 +90,9 @@ class DetailMapViewController: UIViewController {
         )
     }
     
+    
     @objc func centerToUserLocation(){
         
-        print("Latitud: ")
         mapView.showsUserLocation = true
         mapView.centerToLocation(location: CLLocation(
             latitude: mapView.userLocation.coordinate.latitude,
@@ -91,5 +100,6 @@ class DetailMapViewController: UIViewController {
             )
         )
     }
-
+    
+    
 }

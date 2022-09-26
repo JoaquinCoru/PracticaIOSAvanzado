@@ -30,6 +30,7 @@ final class DetailMapViewModel {
                 latitude: Double(location.latitud) ?? 0.0,
                 longitude: Double(location.longitud) ?? 0.0
             )
+            annotation.subtitle = heroe.description
             annotationsForMap.append(annotation)
         }
         
