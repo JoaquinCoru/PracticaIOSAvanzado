@@ -34,7 +34,7 @@ class NetworkModel {
     }
 
     func login(user: String, password: String, completion: @escaping (String?, NetworkError?) -> Void) {
-        guard let url = URL(string: "https://vapor2022.herokuapp.com/api/auth/login") else {
+        guard let url = URL(string: "https://dragonball.keepcoding.education/api/auth/login") else {
             completion(nil, .malformedURL)
             return
         }
@@ -85,7 +85,7 @@ class NetworkModel {
             let name: String
         }
         
-        performAuthenticatedNetworkRequest("https://vapor2022.herokuapp.com/api/heros/all",
+        performAuthenticatedNetworkRequest("https://dragonball.keepcoding.education/api/heros/all",
                                            httpMethod: .post,
                                            httpBody: Body(name: "")) { (result: Result<[Hero], NetworkError>) in
             switch result {
@@ -105,7 +105,7 @@ class NetworkModel {
         }
         
         performAuthenticatedNetworkRequest(
-            "https://vapor2022.herokuapp.com/api/heros/locations",
+            "https://dragonball.keepcoding.education/api/heros/locations",
             httpMethod: .post,
             httpBody: Body(id: heroId)) { (result:Result<[HeroCoordenates],NetworkError>) in
                 switch result{

@@ -47,9 +47,12 @@ class HomeViewController: UIViewController {
         }
         
         viewModel.onError = { title, error in
-            self.activityIndicator.stopAnimating()
-            self.collectionView.isHidden = false
-            print(error?.localizedDescription)
+            DispatchQueue.main.async { [weak self] in
+                self?.activityIndicator.stopAnimating()
+                self?.collectionView.isHidden = false
+                self?.showAlert(title: title, message: error?.localizedDescription ?? "")
+            }
+
         }
         
         viewModel.viewDidLoad()

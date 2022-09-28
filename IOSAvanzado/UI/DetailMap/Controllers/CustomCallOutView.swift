@@ -42,8 +42,8 @@ class CustomCallOutView: UIView {
      }
      
      private func setupSubtitle() {
-       subtitleLabel.font = UIFont.systemFont(ofSize: 14)
-        subtitleLabel.numberOfLines = 8
+       subtitleLabel.font = UIFont.systemFont(ofSize: 16)
+        subtitleLabel.numberOfLines = 10
          subtitleLabel.textAlignment = .justified
        subtitleLabel.textColor = .gray
        subtitleLabel.text = annotation.heroDescription

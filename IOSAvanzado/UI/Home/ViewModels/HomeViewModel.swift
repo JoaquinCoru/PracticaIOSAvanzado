@@ -31,7 +31,6 @@ final class HomeViewModel{
     func viewDidLoad() {
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             self?.loadHeroes()
-           // self?.keychain.delete("KCToken")
         }
     }
     
@@ -40,7 +39,7 @@ final class HomeViewModel{
         let cdHeroes = CoreDataManager.shared.fetchHeroes()
         
         guard let date = LocalDataModel.getSyncDate(),
-              date.addingTimeInterval(1) > Date(),
+              date.addingTimeInterval(84960) > Date(),
               !cdHeroes.isEmpty
         else {
             print("Do network call")
